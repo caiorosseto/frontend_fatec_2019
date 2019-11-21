@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
-import { AutenticacaoService } from 'src/app/services/autenticacao-service/autenticacao.service';
-import { Cliente } from 'src/app/models/cliente.model';
 
 @Component({
   selector: 'page-cliente',
@@ -10,59 +7,21 @@ import { Cliente } from 'src/app/models/cliente.model';
 })
 
 export class PageClienteComponent implements OnInit {
+  constructor() { }
 
-  public Cliente: Cliente;
-  public Aviso: string;
-
-  constructor(
-    private ClienteService: ClienteService,
-    private AutenticacaoService: AutenticacaoService
-  ) { }
-
-  ngOnInit() {
-    this.Cliente = new Cliente();
-    if (this.AutenticacaoService.UsuarioLogado)
-      this.CarregarCliente();
+  ngOnInit() {  
   }
 
-  public CarregarCliente() {
-    this.ClienteService.Consultar().subscribe(
-      sucess => this.Cliente = sucess,
-      error => console.log(error)
-    )
+  public CarregarCliente() {  
   }
 
-  public Salvar() {
-    this.Aviso = undefined;
-
-    if (this.Cliente.Senha != this.Cliente.ConfirmarSenha) {
-      this.Aviso = "As senhas não estão igual."
-    } else {
-      if (this.Cliente.Id === undefined)
-        this.Cadastrar();
-      else
-        this.Alterar();
-    }
+  public Salvar() {   
   }
 
-  private Cadastrar() {
-    this.ClienteService.Inserir(this.Cliente).subscribe(
-      sucess => {
-        this.Cliente = sucess;
-        this.Aviso = "Cliente cadastrado com sucesso";
-      },
-      error => this.Aviso = "Erro ao cadastrar cliente"
-    );
+  private Cadastrar() {    
   }
 
   private Alterar() {
-    this.ClienteService.Atualizar(this.Cliente).subscribe(
-      sucess => {
-        this.Cliente = sucess;
-        this.Aviso = "Cliente alterado com sucesso";
-      },
-      error => this.Aviso = "Erro ao alterar cliente"
-    );
   }
 
 }

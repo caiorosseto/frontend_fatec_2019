@@ -17,14 +17,14 @@ export class ClienteService extends BaseService {
   }
 
   public Inserir(cliente: Cliente): Observable<Cliente> {
-    return this.HttpClient.post<Cliente>(this.EndPoint("Cliente"), cliente);
+     return null;
   }
 
   public Atualizar(cliente: Cliente): Observable<Cliente> {
-    return this.HttpClient.put<Cliente>(this.EndPoint("Cliente"), cliente, { headers: this.HeaderAuthorization() });
+    return null;
   }
 
   public Consultar(): Observable<Cliente> {
-    return this.HttpClient.get<Cliente>(this.EndPoint(`Cliente`), { headers: this.HeaderAuthorization() });
+    return null;
   }
 }
