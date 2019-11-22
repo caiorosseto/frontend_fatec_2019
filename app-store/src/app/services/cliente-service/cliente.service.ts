@@ -17,7 +17,7 @@ export class ClienteService extends BaseService {
   }
 
   public Inserir(cliente: Cliente): Observable<Cliente> {
-     return null;
+     return this.HttpClient.post<Cliente>(this.EndPoint("Cliente"), cliente);    
   }
 
   public Atualizar(cliente: Cliente): Observable<Cliente> {

@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app-store"
+    "\\app-store",
+    "\\app-store\\src"
   ],
   "PreviewInSolutionExplorer": false
 }
